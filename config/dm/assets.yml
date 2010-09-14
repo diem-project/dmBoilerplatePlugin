@@ -1,0 +1,11 @@
+css:
+  
+  dmBoilerplatePlugin:
+    base:     base-<?php echo sfConfig::get('sf_environment')."\n" ?>
+    media:    media-<?php echo sfConfig::get('sf_environment')."\n" ?>
+    handheld: handheld-<?php echo sfConfig::get('sf_environment')."\n" ?>
+
+js:
+
+  dmBoilerplatePlugin:
+    modernizr:  modernizr-1.5.min
