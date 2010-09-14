@@ -1,0 +1,79 @@
+dmBoilerplatePlugin is a porting from Html5Boilerplate for the Diem Symfony CMF
+
+* Set the front `layout_helper.class` service to `dmBoilerplatePluginFrontLayoutHelper`
+  In the front application services
+  <code lang="yml">
+  # front/config/dm/services.yml
+  parameters:
+  
+    layout_helper.class:    dmBoilerplatePluginFrontLayoutHelper
+  </code>
+  
+  Or directly in the layout template
+  <code lang="php">
+  <?php /* front/modules/dmFront/templates/layout.php */
+  // @var dmBoilerplatePluginFrontLayoutHelper; customized layout_helper front service
+  $helper = $sf_context->get('layout_helper', 'dmBoilerplatePluginFrontLayoutHelper');
+  
+  // ... next code
+  </code>
+  
+* Set the plugin configuration
+	The plugin configuration can be set in the ProjectConfiguration class via a `configureBoilerplate` method.
+	It can also be configured in the `front/config/app.yml` configuration file, or via a connection to the 'dm_boilerplate.configuration' event.
+	The description on how to achieve that is described below with its default configuration.
+	
+	The plugin configuration instance is passed in as its argument, or can be retrieved through the `getPluginConfiguration` method
+	<code lang="php">
+	// config/ProjectConfiguration.class.php, default configuration
+	public function setup()
+	{
+		// ... previous code
+		
+		$this->enablePlugins('dmBoilerplatePlugin');
+	}
+	
+	public function configureBoilerplate(dmBoilerplatePluginConfiguration $config)
+	{
+		// Configure dmBoilerplatePlugin, the plugin instance can also be retrieved as follow
+		//$config = $this->getPluginConfiguration('dmBoilerplatePlugin');
+		
+		$config->setHtaccessModify(true);
+		$config->setHtaccessBackup('-boilerplate-backup');
+	}
+	</code>
+	
+	Configuration via any `app.yml` file
+	<code lang="yml">
+	# front/config/app.yml, default configuration
+	  dmBoilerplatePlugin:
+	    htaccess.modify: true
+	    htaccess.backup: "-boilerplate-backup"
+	</code>
+	
+	Configuration via `dm_boilerplate.configuration` event, for example in the ProjectConfiguration
+	Event parameters: array('configuration' => dmBoilerplatePluginConfiguration instance)
+	<code lang="php">
+	// config/ProjectConfiguration.class.php, default configuration
+	public function setup()
+	{
+	  $this->dispatcher->connect('dm_boilerplate.configuration', array($this, 'listenToBoilerplateConfiguration'));
+		// ... previous code
+		
+		$this->enablePlugins('dmBoilerplatePlugin');
+	}
+	
+	public function listenToBoilerplateConfiguration(sfEvent $event)
+	{
+	  $config = $event['configuration'];
+	  
+	  $config->setHtaccessModify(true);
+		$config->setHtaccessBackup('-boilerplate-backup');
+	}
+	</code>
+	
+* Run the dm:setup task
+  <code lang="shell">
+    php symfony dm:setup
+  </code>	
+
