@@ -45,7 +45,7 @@ class dmBoilerplatePluginConfiguration extends sfPluginConfiguration
       if (!file_exists($htBack))
       {
         // Generate the new file
-        require_once(this->getRootDir() . '/config/helper/dmBoilerplatePluginHtaccess.class.php');
+        require_once($this->getRootDir() . '/config/helper/dmBoilerplatePluginHtaccess.class.php');
         dmBoilerplatePluginHtaccess::generate($htPath, $htBack);
       }
     }
