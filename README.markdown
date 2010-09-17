@@ -1,5 +1,5 @@
 The plugin use the recommandation from [Html5Boilerplate](http://html5boilerplate.com/ "Html5Boilerplate") by modifying the `.htaccess` file, adding the assets (CSS & JS), and changing the layout.
-Compatible with [Diem 5.1] (not tested for other versions).
+Compatible with [Diem 5.1] (not tested on other versions).
 
 Change the front layout
 -----------------------

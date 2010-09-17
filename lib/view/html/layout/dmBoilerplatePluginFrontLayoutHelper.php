@@ -1,8 +1,8 @@
 <?php
 
 /**
- *  Customize the `layout_helper` service to use html5boilerplate recommendation
- *  Original `dmFrontLayoutHelper` located in lib/vendor/diem/dmFrontPlugin/lib/view/html/layout
+ *  Customize the `layout_helper` service to use http://html5boilerplate.com recommendation
+ *  Original `dmFrontLayoutHelper` file path: %DM_FRONT_DIR%/lib/view/html/layout/dmFrontLayoutHelper.php
  */
 class dmBoilerplatePluginFrontLayoutHelper extends dmFrontLayoutHelper
 {
@@ -156,7 +156,7 @@ class dmBoilerplatePluginFrontLayoutHelper extends dmFrontLayoutHelper
 
   /**
    * BODY tag rendering
-   * Customized to add `class="ie%VERSION%"`
+   * Customized to add `class="ie%VERSION%"` tag attribute
    *
    * @see dmFrontLayoutHelper
    */
