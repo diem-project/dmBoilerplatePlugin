@@ -6,6 +6,7 @@
  */
 class dmBoilerplatePluginFrontLayoutHelper extends dmFrontLayoutHelper
 {
+
   protected $assetsBaseName = 'dmBoilerplatePlugin';
 
   /**
@@ -122,7 +123,7 @@ class dmBoilerplatePluginFrontLayoutHelper extends dmFrontLayoutHelper
 
     // Render the `response` stylesheets
     $html = parent::renderStylesheets();
-    
+
     // Fix the close tag and return the result
     return $this->fixCloseTag($html);
   }
@@ -203,4 +204,5 @@ s.parentNode.insertBefore(ga, s);
 })(document, 'script');
 </script>";
   }
+
 }
